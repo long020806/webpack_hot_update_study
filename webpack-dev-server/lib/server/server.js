@@ -24,9 +24,10 @@ class Server {
     createSocketServer() {
         const io = socketIO(this.server); //websocket依赖http服务器
         // 服务端监听客户端链接，当客户端链接 socket代表客户端的链接对象
-        io.on("connettion", (socket) => {
+        io.on("connection", (socket) => {
             console.log("一个客户端已经连接")
             this.currentSocketList.push(socket); //把新的socket放入socketList触发钩子函数时才能完成操作
+            // console.log("socket"+socket)
             socket.emit("hash", this.currentHash); //将最新的hash发给客户端
             socket.emit("ok"); //给客户端发送ok
             //如果客户端断开链接从socketList移除
@@ -78,7 +79,7 @@ class Server {
                         return res.sendStatus("404")
                     }
                 } catch (err) {
-                    console.log(err)
+                    // console.log(err)
                     return res.sendStatus("404")
                 }
             }
