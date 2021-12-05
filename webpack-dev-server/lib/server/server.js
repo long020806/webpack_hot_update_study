@@ -72,7 +72,7 @@ class Server {
                         // 读取内容
                         let content = this.fs.readFileSync(filePath);
                         // 设置响应头 此文件内容是什么
-                        res.setHeader("Content-Type", mime.getType(filePath)); //mime.getType(filePath);mime暂时报错先手动写
+                        res.setHeader("Content-Type", "text/html"); //mime.getType(filePath);mime暂时报错先手动写
                         // 把内容发送给浏览器
                         res.send(content);
                     } else {
